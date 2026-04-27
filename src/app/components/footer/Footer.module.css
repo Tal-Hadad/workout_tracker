@@ -1,0 +1,30 @@
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #0f0f0f;
+  border-top: 1px solid rgba(128, 128, 128, 0.2);
+  padding: 8px 0 12px;
+}
+
+.footerList {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  margin: 0;
+  padding: 0;
+}
+
+.link {
+  color: var(--fg);
+  opacity: 0.4;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  padding: 4px 20px;
+}
+
+.active {
+  opacity: 1;
+}

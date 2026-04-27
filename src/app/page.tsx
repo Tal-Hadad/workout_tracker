@@ -1,6 +1,11 @@
-import Image from "next/image";
 import styles from "./page.module.css";
+import WorkoutStarter from "./components/workout/WorkoutStarter";
 
 export default function Home() {
-  return <div className={styles.page}></div>;
+  return (
+    <main className={styles.page}>
+      <h1>Workout</h1>
+      <WorkoutStarter />
+    </main>
+  );
 }

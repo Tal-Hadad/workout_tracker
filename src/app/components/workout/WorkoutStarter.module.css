@@ -1,0 +1,15 @@
+.button {
+  margin-top: 1rem;
+  padding: 0.75rem 1.5rem;
+  background-color: var(--fg);
+  color: var(--bg);
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.button:active {
+  opacity: 0.8;
+}
