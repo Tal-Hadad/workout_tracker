@@ -6,7 +6,7 @@ const ExerciseSchema = new Schema({
     required: true,
     trim: true,
     unique: true,
-    set: (v) => v.charAt(0).toUpperCase() + v.slice(1),
+    set: (v: string) => v.charAt(0).toUpperCase() + v.slice(1),
   },
   bodyPart: {
     type: [String],
@@ -22,12 +22,14 @@ const ExerciseSchema = new Schema({
       "Other",
     ],
     trim: true,
-    set: (v) =>
-      Array.isArray(v)
-        ? v.map((item) => item.charAt(0).toUpperCase() + item.slice(1))
-        : v
-          ? v.charAt(0).toUpperCase() + v.slice(1)
-          : v,
+    set: (v: unknown) => {
+      if (Array.isArray(v)) {
+        return v.map(
+          (item: string) => item.charAt(0).toUpperCase() + item.slice(1),
+        );
+      }
+      return typeof v === "string" ? v.charAt(0).toUpperCase() + v.slice(1) : v;
+    },
   },
   category: {
     type: String,
@@ -40,7 +42,7 @@ const ExerciseSchema = new Schema({
       "Cardio",
     ],
     trim: true,
-    set: (v) => v.charAt(0).toUpperCase() + v.slice(1),
+    set: (v: string) => v.charAt(0).toUpperCase() + v.slice(1),
   },
 });
 
