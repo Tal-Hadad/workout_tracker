@@ -1,13 +1,10 @@
 import mongoose from "mongoose";
-import dns from "dns";
 
-dns.setServers(["8.8.8.8", "8.8.4.4"]);
-
-const MONGODB_URI = process.env.MONGODBURI;
+const MONGODB_URI = process.env.MONGODB_URI;
 
 if (!MONGODB_URI) {
   throw new Error(
-    "Please define the MONGODBURI environment variable inside .env.local",
+    "Please define the MONGODB_URI environment variable inside .env.local",
   );
 }
 
