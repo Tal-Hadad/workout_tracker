@@ -1,5 +1,7 @@
-// lib/mongodb.js
 import mongoose from "mongoose";
+import dns from "dns";
+
+dns.setServers(["8.8.8.8", "8.8.4.4"]);
 
 const MONGODB_URI = process.env.MONGODBURI;
 
@@ -19,7 +21,7 @@ async function dbConnect() {
   if (cached.conn) return cached.conn;
 
   if (!cached.promise) {
-    const opts = { bufferCommands: false };
+    const opts = { bufferCommands: false, family: 4 };
     cached.promise = mongoose.connect(MONGODB_URI, opts).then((mongoose) => {
       console.log(" MongoDB Connected successfully");
       return mongoose;
