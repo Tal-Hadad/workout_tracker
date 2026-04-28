@@ -1,0 +1,35 @@
+.container {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.header h1 {
+  margin: 0;
+}
+
+.card {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  color: var(--fg);
+}
+
+.card h2 {
+  margin: 0 0 0.5rem;
+  color: var(--fg);
+}
+
+.card p {
+  margin: 0.25rem 0;
+  color: var(--muted);
+}
