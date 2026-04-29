@@ -1,6 +1,6 @@
 "use client";
-import { useState } from "react";
 import styles from "./page.module.css";
+import { useState } from "react";
 import { useExercises } from "@/app/hooks/exercises";
 import AddExerciseButton from "@/app/components/exercises/addexercisebutton/AddExerciseButton";
 import SearchBar from "../components/exercises/searchbar/SearchBar";
