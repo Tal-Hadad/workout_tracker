@@ -1,15 +1,17 @@
 .addBtn {
+  width: 100%;
   padding: 0.5rem 1.25rem;
-  background: var(--surface);
+  background: var(--accent);
   color: var(--fg);
   border: 1px solid var(--border);
   border-radius: 6px;
   cursor: pointer;
   font-size: 0.95rem;
+  margin-bottom: 1rem;
 }
 
 .addBtn:hover {
-  background: #222;
+  opacity: 0.85;
 }
 
 .overlay {
@@ -140,13 +142,13 @@
 }
 
 .cancelBtn:hover {
-  background: #222;
+  background: red;
 }
 
 .submitBtn {
   padding: 0.45rem 1.25rem;
-  background: var(--fg);
-  color: var(--bg);
+  background: #35a7ff;
+  color: var(--fg);
   border: none;
   border-radius: 5px;
   cursor: pointer;

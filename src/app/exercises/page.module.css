@@ -24,12 +24,42 @@
   color: var(--fg);
 }
 
-.card h2 {
-  margin: 0 0 0.5rem;
-  color: var(--fg);
+.cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
 }
 
-.card p {
-  margin: 0.25rem 0;
+.cardHeader h2 {
+  margin: 0;
+  color: var(--fg);
+  font-size: 1.05rem;
+}
+
+.category {
+  flex-shrink: 0;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  border: 1px solid var(--accent-border);
+}
+
+.bodyPart {
+  margin: 0;
+  font-size: 0.9rem;
   color: var(--muted);
+}
+
+.searchContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
 }

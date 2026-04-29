@@ -5,11 +5,10 @@ const ExerciseSchema = new Schema({
     type: String,
     required: true,
     trim: true,
-    unique: true,
-    set: (v: string) => v.charAt(0).toUpperCase() + v.slice(1),
+    set: (v: string) => v.replace(/\b\w/g, (c) => c.toUpperCase()),
   },
   bodyPart: {
-    type: [String],
+    type: String,
     enum: [
       "Chest",
       "Back",
@@ -22,20 +21,14 @@ const ExerciseSchema = new Schema({
       "Other",
     ],
     trim: true,
-    set: (v: unknown) => {
-      if (Array.isArray(v)) {
-        return v.map(
-          (item: string) => item.charAt(0).toUpperCase() + item.slice(1),
-        );
-      }
-      return typeof v === "string" ? v.charAt(0).toUpperCase() + v.slice(1) : v;
-    },
+    set: (v: string) => v.charAt(0).toUpperCase() + v.slice(1),
   },
   category: {
     type: String,
     enum: [
       "Barbell",
       "Dumbbell",
+      "Cable",
       "Machine/Other",
       "Bodyweight",
       "Assisted Bodywight",
@@ -45,6 +38,8 @@ const ExerciseSchema = new Schema({
     set: (v: string) => v.charAt(0).toUpperCase() + v.slice(1),
   },
 });
+
+ExerciseSchema.index({ name: 1, category: 1 }, { unique: true });
 
 const Exercise = models.Exercise || mongoose.model("Exercise", ExerciseSchema);
 

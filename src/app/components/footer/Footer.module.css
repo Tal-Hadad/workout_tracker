@@ -1,11 +1,22 @@
 .footer {
   position: fixed;
   bottom: 0;
-  left: 0;
-  right: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 480px;
   background-color: #0f0f0f;
   border-top: 1px solid rgba(128, 128, 128, 0.2);
   padding: 8px 0 12px;
+}
+
+@media (min-width: 600px) {
+  .footer {
+    bottom: 32px;
+    border-bottom-left-radius: 16px;
+    border-bottom-right-radius: 16px;
+    overflow: hidden;
+  }
 }
 
 .footerList {

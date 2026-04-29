@@ -1,0 +1,19 @@
+.searchBar {
+  flex: 1;
+}
+
+.searchbar {
+  width: 100%;
+  box-sizing: border-box;
+  background-color: var(--surface);
+  color: white;
+  border-radius: 5px;
+  padding: 0.5rem;
+  border: 1px solid var(--border);
+}
+
+.searchbar:hover,
+.searchbar:focus {
+  border-color: var(--accent);
+  outline: none;
+}

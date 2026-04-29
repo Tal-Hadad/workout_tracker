@@ -19,8 +19,14 @@ export async function POST(request: Request) {
 export async function GET() {
   try {
     await dbConnect();
-    const exercises = await Exercise.find({});
-    return Response.json({ exercises });
+    const exercises = await Exercise.find({}).lean();
+    const normalized = exercises.map((ex) => ({
+      ...ex,
+      bodyPart: Array.isArray(ex.bodyPart)
+        ? (ex.bodyPart[0] ?? "")
+        : ex.bodyPart,
+    }));
+    return Response.json({ exercises: normalized });
   } catch (error) {
     const message = error instanceof Error ? error.message : String(error);
     console.error("Error fetching exercises:", error);

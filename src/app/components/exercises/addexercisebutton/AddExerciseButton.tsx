@@ -17,28 +17,20 @@ const BODY_PARTS = [
 const CATEGORIES = [
   "Barbell",
   "Dumbbell",
+  "Cable",
   "Machine/Other",
   "Bodyweight",
   "Assisted Bodywight",
   "Cardio",
 ];
 
-const emptyForm = { name: "", bodyPart: [] as string[], category: "" };
+const emptyForm = { name: "", bodyPart: "", category: "" };
 
 export default function AddExerciseButton({ onAdd }: { onAdd: () => void }) {
   const [open, setOpen] = useState(false);
   const [form, setForm] = useState(emptyForm);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
-
-  function toggleBodyPart(part: string) {
-    setForm((f) => ({
-      ...f,
-      bodyPart: f.bodyPart.includes(part)
-        ? f.bodyPart.filter((p) => p !== part)
-        : [...f.bodyPart, part],
-    }));
-  }
 
   function close() {
     setOpen(false);
@@ -99,9 +91,14 @@ export default function AddExerciseButton({ onAdd }: { onAdd: () => void }) {
                   {BODY_PARTS.map((part) => (
                     <label key={part} className={styles.checkboxLabel}>
                       <input
-                        type="checkbox"
-                        checked={form.bodyPart.includes(part)}
-                        onChange={() => toggleBodyPart(part)}
+                        type="radio"
+                        name="bodyPart"
+                        value={part}
+                        checked={form.bodyPart === part}
+                        onChange={() =>
+                          setForm((f) => ({ ...f, bodyPart: part }))
+                        }
+                        required
                       />
                       {part}
                     </label>
