@@ -1,0 +1,17 @@
+.sortBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  background: transparent;
+  color: var(--fg);
+  border: none;
+  cursor: pointer;
+  flex-shrink: 0;
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+.sortBtn:hover {
+  color: var(--accent);
+}

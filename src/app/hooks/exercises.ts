@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 interface Exercise {
   _id: string;
   name: string;
-  bodyPart: string[];
+  bodyPart: string;
   category: string;
 }
 
