@@ -28,7 +28,7 @@ export default function RootLayout({
       <head>
         <link
           rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=account_circle,add_2,arrow_drop_down,arrow_drop_up,edit,exercise,filter_alt,history"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=account_circle,add_2,arrow_drop_down,arrow_drop_up,calendar_today,close,delete,edit,exercise,filter_alt,history,timer"
           precedence="default"
         />
       </head>

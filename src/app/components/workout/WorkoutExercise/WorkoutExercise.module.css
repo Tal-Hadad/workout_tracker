@@ -1,0 +1,137 @@
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.65rem 0.85rem;
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.exerciseName {
+  display: flex;
+  align-items: baseline;
+  gap: 0.45rem;
+  font-weight: 600;
+  color: var(--fg);
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+.exerciseCategory {
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: var(--muted);
+}
+
+.removeExerciseBtn {
+  background: none;
+  border: none;
+  color: var(--muted);
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.removeExerciseBtn:hover {
+  color: #ff6b6b;
+}
+
+.removeExerciseBtn .material-symbols-outlined {
+  font-size: 1.15rem;
+}
+
+.setsHeader {
+  display: grid;
+  grid-template-columns: 36px 1fr 1fr 28px;
+  gap: 0.5rem;
+  padding: 0.1rem 0;
+  font-size: 0.72rem;
+  color: var(--muted);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.2rem;
+}
+
+.setsHeader span {
+  text-align: center;
+}
+
+.setRow {
+  display: grid;
+  grid-template-columns: 36px 1fr 1fr 28px;
+  gap: 0.5rem;
+  align-items: center;
+  margin-bottom: 0.25rem;
+}
+
+.setNumber {
+  font-size: 0.85rem;
+  color: var(--muted);
+  text-align: center;
+  font-weight: 500;
+}
+
+.setInput {
+  padding: 0.3rem 0.35rem;
+  background: var(--bg);
+  color: var(--fg);
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  font-size: 0.9rem;
+  width: 100%;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.setInput:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.setInput::-webkit-outer-spin-button,
+.setInput::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+.removeSetBtn {
+  background: none;
+  border: none;
+  color: var(--muted);
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.removeSetBtn:hover {
+  color: #ff6b6b;
+}
+
+.removeSetBtn .material-symbols-outlined {
+  font-size: 1rem;
+}
+
+.addSetBtn {
+  margin-top: 0.4rem;
+  width: 100%;
+  padding: 0.35rem;
+  background: none;
+  color: var(--accent);
+  border: 1px dashed var(--accent-border);
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.88rem;
+}
+
+.addSetBtn:hover {
+  background: var(--accent-soft);
+}
