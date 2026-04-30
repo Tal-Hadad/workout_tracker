@@ -4,12 +4,14 @@ import styles from "./page.module.css";
 import WorkoutStarter from "./components/workout/StartWorkoutButton/WorkoutStarter";
 import HistoryCard from "./components/workout/HistoryCard/HistoryCard";
 import { SavedWorkout } from "./components/workout/WorkoutModal/WorkoutModal";
+import LoginButton from "./components/auth/LoginButton/LoginButton";
 
 export default function Home() {
   const [savedWorkouts, setSavedWorkouts] = useState<SavedWorkout[]>([]);
 
   return (
     <>
+      <LoginButton />
       <main className={styles.page}>
         <h1>Workout</h1>
         <WorkoutStarter

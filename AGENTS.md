@@ -7,3 +7,4 @@ This version has breaking changes — APIs, conventions, and file structure may 
 <!-- END:nextjs-agent-rules -->
 
 never use inline css, use css modules, try to make the code clean, try to put everything feature into its own component for better organization, the icons in the google link need to be in alphabetical order.
+ignore env.local.example
