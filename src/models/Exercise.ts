@@ -1,6 +1,11 @@
 import mongoose, { Schema, models } from "mongoose";
 
 const ExerciseSchema = new Schema({
+  userId: {
+    type: Schema.Types.ObjectId,
+    ref: "User",
+    default: null,
+  },
   name: {
     type: String,
     required: true,
