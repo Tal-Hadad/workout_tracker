@@ -22,7 +22,6 @@ export default function Footer() {
             <Link
               href={href}
               className={`${styles.link}${pathname === href ? ` ${styles.active}` : ""}`}
-              as="icon"
             >
               <span className="material-symbols-outlined">{icon}</span>
             </Link>
