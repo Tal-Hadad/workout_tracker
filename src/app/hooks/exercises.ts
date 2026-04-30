@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-interface Exercise {
+export interface Exercise {
   _id: string;
   name: string;
   bodyPart: string;
