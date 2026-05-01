@@ -1,11 +1,13 @@
 "use client";
 import styles from "./page.module.css";
+import { useSession } from "next-auth/react";
 import { useExercises } from "@/app/hooks/exercises";
 import { useFilteredExercises } from "@/app/hooks/useFilteredExercises";
 import ExerciseCard from "@/app/components/exercises/exercisecard/ExerciseCard";
 import ExerciseToolbar from "@/app/components/exercises/exercisetoolbar/ExerciseToolbar";
 
 export default function ExercisesList() {
+  const { data: session } = useSession();
   const { exercises, loading, error, refetch } = useExercises();
   const {
     query,
@@ -35,7 +37,12 @@ export default function ExercisesList() {
         onAdd={refetch}
       />
       {filteredExercises.map((exercise) => (
-        <ExerciseCard key={exercise._id} exercise={exercise} onSave={refetch} />
+        <ExerciseCard
+          key={exercise._id}
+          exercise={exercise}
+          onSave={refetch}
+          sessionUserId={session?.user?.id}
+        />
       ))}
     </div>
   );

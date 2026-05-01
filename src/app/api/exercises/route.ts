@@ -34,11 +34,13 @@ export async function GET() {
 export async function POST(request: Request) {
   try {
     const session = await auth();
-    const userId = session?.user?.id ?? null;
+    if (!session?.user?.id) {
+      return Response.json({ error: "Unauthorized" }, { status: 401 });
+    }
 
     await dbConnect();
     const body = await request.json();
-    const exercise = await Exercise.create({ ...body, userId });
+    const exercise = await Exercise.create({ ...body, userId: session.user.id });
     return Response.json({ exercise }, { status: 201 });
   } catch (error) {
     const message = error instanceof Error ? error.message : String(error);

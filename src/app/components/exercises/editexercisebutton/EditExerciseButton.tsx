@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import styles from "./EditExerciseButton.module.css";
+import { Exercise } from "@/app/hooks/exercises";
 
 const BODY_PARTS = [
   "Chest",
@@ -23,13 +24,6 @@ const CATEGORIES = [
   "Assisted Bodywight",
   "Cardio",
 ];
-
-interface Exercise {
-  _id: string;
-  name: string;
-  bodyPart: string;
-  category: string;
-}
 
 interface Props {
   exercise: Exercise;

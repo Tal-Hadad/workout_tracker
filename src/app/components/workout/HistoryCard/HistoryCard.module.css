@@ -7,7 +7,41 @@
 }
 
 .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
   margin-bottom: 0.75rem;
+}
+
+.actions {
+  display: flex;
+  gap: 0.25rem;
+  flex-shrink: 0;
+  margin-left: 0.5rem;
+}
+
+.editBtn,
+.deleteBtn {
+  background: none;
+  border: none;
+  color: var(--muted);
+  cursor: pointer;
+  padding: 0.15rem;
+  display: flex;
+  align-items: center;
+}
+
+.editBtn:hover {
+  color: var(--accent);
+}
+
+.deleteBtn:hover {
+  color: #e05252;
+}
+
+.editBtn .material-symbols-outlined,
+.deleteBtn .material-symbols-outlined {
+  font-size: 1.1rem;
 }
 
 .title {

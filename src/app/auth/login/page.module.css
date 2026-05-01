@@ -27,7 +27,9 @@
   border-radius: 50%;
   color: var(--muted);
   text-decoration: none;
-  transition: background 0.15s, color 0.15s;
+  transition:
+    background 0.15s,
+    color 0.15s;
 }
 
 .exitBtn:hover {

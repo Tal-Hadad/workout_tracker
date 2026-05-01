@@ -1,5 +1,7 @@
 "use client";
 import React, { useState } from "react";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 import styles from "./AddExerciseButton.module.css";
 
 const BODY_PARTS = [
@@ -31,6 +33,8 @@ export default function AddExerciseButton({ onAdd }: { onAdd: () => void }) {
   const [form, setForm] = useState(emptyForm);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const { data: session } = useSession();
+  const router = useRouter();
 
   function close() {
     setOpen(false);
@@ -38,7 +42,7 @@ export default function AddExerciseButton({ onAdd }: { onAdd: () => void }) {
     setError(null);
   }
 
-  async function handleSubmit(e: React.SubmitEvent<HTMLFormElement>) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setSubmitting(true);
     setError(null);
@@ -63,7 +67,16 @@ export default function AddExerciseButton({ onAdd }: { onAdd: () => void }) {
 
   return (
     <>
-      <button className={styles.addBtn} onClick={() => setOpen(true)}>
+      <button
+        className={styles.addBtn}
+        onClick={() => {
+          if (!session?.user) {
+            router.push("/auth/login");
+            return;
+          }
+          setOpen(true);
+        }}
+      >
         + Add Exercise
       </button>
 
