@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { useSession } from "next-auth/react";
 import { SavedWorkout } from "@/app/components/workout/WorkoutModal/WorkoutModal";
 
@@ -29,11 +29,18 @@ export function useWorkoutHistory() {
   const [loading, setLoading] = useState(true);
   const migrated = useRef(false);
 
+  const fetchFromServer = useCallback(async () => {
+    const res = await fetch("/api/workouts/history");
+    if (res.ok) {
+      const data = await res.json();
+      setHistory(data.workouts as SavedWorkout[]);
+    }
+  }, []);
+
   useEffect(() => {
     if (status === "loading") return;
 
     if (session?.user?.id) {
-      // Migrate localStorage → MongoDB once per login, then fetch from server
       const localItems = readLocalStorage();
       const doFetch = async () => {
         if (localItems.length > 0 && !migrated.current) {
@@ -46,21 +53,16 @@ export function useWorkoutHistory() {
           clearLocalStorage();
         }
 
-        const res = await fetch("/api/workouts/history");
-        if (res.ok) {
-          const data = await res.json();
-          setHistory(data.workouts as SavedWorkout[]);
-        }
+        await fetchFromServer();
         setLoading(false);
       };
 
       doFetch();
     } else {
-      // Not logged in — use localStorage
       setHistory(readLocalStorage());
       setLoading(false);
     }
-  }, [session, status]);
+  }, [session, status, fetchFromServer]);
 
   async function saveWorkout(workout: SavedWorkout) {
     if (session?.user?.id) {
@@ -70,7 +72,7 @@ export function useWorkoutHistory() {
         body: JSON.stringify(workout),
       });
       if (res.ok) {
-        setHistory((prev) => [workout, ...prev]);
+        await fetchFromServer();
       }
     } else {
       const updated = [workout, ...history];
@@ -79,5 +81,42 @@ export function useWorkoutHistory() {
     }
   }
 
-  return { history, loading, saveWorkout };
+  async function updateWorkout(
+    id: string,
+    updates: Pick<SavedWorkout, "title" | "durationSeconds" | "entries">,
+  ) {
+    if (session?.user?.id) {
+      const res = await fetch(`/api/workouts/history/${id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(updates),
+      });
+      if (res.ok) {
+        await fetchFromServer();
+      }
+    } else {
+      const updated = history.map((w) =>
+        w.id === id ? { ...w, ...updates } : w,
+      );
+      writeLocalStorage(updated);
+      setHistory(updated);
+    }
+  }
+
+  async function deleteWorkout(id: string) {
+    if (session?.user?.id) {
+      const res = await fetch(`/api/workouts/history/${id}`, {
+        method: "DELETE",
+      });
+      if (res.ok) {
+        await fetchFromServer();
+      }
+    } else {
+      const updated = history.filter((w) => w.id !== id);
+      writeLocalStorage(updated);
+      setHistory(updated);
+    }
+  }
+
+  return { history, loading, saveWorkout, updateWorkout, deleteWorkout };
 }

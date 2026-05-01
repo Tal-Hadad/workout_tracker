@@ -15,7 +15,9 @@ export async function GET() {
       .sort({ createdAt: -1 })
       .lean();
 
-    return Response.json({ workouts });
+    return Response.json({
+      workouts: workouts.map((w) => ({ ...w, id: String(w._id) })),
+    });
   } catch (error) {
     const message = error instanceof Error ? error.message : String(error);
     return Response.json(

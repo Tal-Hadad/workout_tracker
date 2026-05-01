@@ -11,19 +11,35 @@ function formatDuration(seconds: number): string {
 
 interface Props {
   workout: SavedWorkout;
+  onEdit?: (workout: SavedWorkout) => void;
+  onDelete?: (id: string) => void;
 }
 
-export default function HistoryCard({ workout }: Props) {
+export default function HistoryCard({ workout, onEdit, onDelete }: Props) {
   return (
     <div className={styles.card}>
       <div className={styles.header}>
-        <h2 className={styles.title}>{workout.title}</h2>
-        <div className={styles.meta}>
-          <span className="material-symbols-outlined">calendar_today</span>
-          <span>{workout.date}</span>
-          <span className={styles.dot}>·</span>
-          <span className="material-symbols-outlined">timer</span>
-          <span>{formatDuration(workout.durationSeconds)}</span>
+        <div>
+          <h2 className={styles.title}>{workout.title}</h2>
+          <div className={styles.meta}>
+            <span className="material-symbols-outlined">calendar_today</span>
+            <span>{workout.date}</span>
+            <span className={styles.dot}>·</span>
+            <span className="material-symbols-outlined">timer</span>
+            <span>{formatDuration(workout.durationSeconds)}</span>
+          </div>
+        </div>
+        <div className={styles.actions}>
+          {onEdit && (
+            <button className={styles.editBtn} onClick={() => onEdit(workout)}>
+              <span className="material-symbols-outlined">edit</span>
+            </button>
+          )}
+          {onDelete && (
+            <button className={styles.deleteBtn} onClick={() => onDelete(workout.id)}>
+              <span className="material-symbols-outlined">delete</span>
+            </button>
+          )}
         </div>
       </div>
 

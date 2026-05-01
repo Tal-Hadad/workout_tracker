@@ -41,6 +41,12 @@
   border: 1px solid var(--accent-border);
 }
 
+.cardActions {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
 .bodyPart {
   margin: 0;
   font-size: 0.9rem;
