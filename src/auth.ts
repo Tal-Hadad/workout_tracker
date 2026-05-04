@@ -58,6 +58,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         }
 
         token.id = dbUser._id.toString();
+        token.picture = user.image;
       } else {
         // Credentials: authorize() already resolved the MongoDB _id
         token.id = user.id;
@@ -67,6 +68,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     },
     session({ session, token }) {
       if (token.id) session.user.id = token.id as string;
+      if (token.picture) session.user.image = token.picture as string;
       return session;
     },
   },
