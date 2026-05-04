@@ -16,7 +16,16 @@ export default function LoginButton() {
         className={styles.loginButton}
         onClick={() => signOut({ callbackUrl: "/" })}
       >
-        <span className="material-symbols-outlined">account_circle</span>
+        {session.user.image ? (
+          <img
+            src={session.user.image}
+            alt={session.user.name ?? "User avatar"}
+            className={styles.avatar}
+            referrerPolicy="no-referrer"
+          />
+        ) : (
+          <span className="material-symbols-outlined">account_circle</span>
+        )}
         {session.user.name ?? session.user.email}
       </button>
     );
