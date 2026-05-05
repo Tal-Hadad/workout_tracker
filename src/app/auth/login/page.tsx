@@ -67,7 +67,11 @@ export default function LoginPage() {
 
           {error && <p className={styles.error}>{error}</p>}
 
-          <button className={styles.submitBtn} type="submit" disabled={submitting}>
+          <button
+            className={styles.submitBtn}
+            type="submit"
+            disabled={submitting}
+          >
             {submitting ? "Logging in…" : "Log in"}
           </button>
         </form>
@@ -79,11 +83,12 @@ export default function LoginPage() {
           type="button"
           onClick={() => signIn("google", { callbackUrl: "/" })}
         >
+          <img src="/google.svg" className={styles.googleLogo} />
           Continue with Google
         </button>
 
         <p className={styles.footer}>
-          Don&apos;t have an account?{" "}
+          Don't have an account?{" "}
           <Link className={styles.link} href="/auth/register">
             Create one
           </Link>
