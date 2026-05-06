@@ -1,7 +1,7 @@
 "use client";
 import styles from "./page.module.css";
 import { useSession } from "next-auth/react";
-import { useExercises } from "@/app/hooks/exercises";
+import { useExercises } from "@/app/hooks/useExercises";
 import { useFilteredExercises } from "@/app/hooks/useFilteredExercises";
 import ExerciseCard from "@/app/components/exercises/exercisecard/ExerciseCard";
 import ExerciseToolbar from "@/app/components/exercises/exercisetoolbar/ExerciseToolbar";

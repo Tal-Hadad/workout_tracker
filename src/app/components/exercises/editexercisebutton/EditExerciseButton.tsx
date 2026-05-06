@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import styles from "./EditExerciseButton.module.css";
-import { Exercise } from "@/app/hooks/exercises";
+import { Exercise } from "@/app/hooks/useExercises";
 
 const BODY_PARTS = [
   "Chest",
@@ -80,7 +80,11 @@ export default function EditExerciseButton({ exercise, onSave }: Props) {
 
   return (
     <>
-      <button className={styles.editBtn} onClick={handleOpen} aria-label="Edit exercise">
+      <button
+        className={styles.editBtn}
+        onClick={handleOpen}
+        aria-label="Edit exercise"
+      >
         <span className="material-symbols-outlined">edit</span>
       </button>
 

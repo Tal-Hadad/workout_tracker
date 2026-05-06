@@ -3,13 +3,13 @@ import { useState } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import WorkoutModal, { SavedWorkout } from "../WorkoutModal/WorkoutModal";
-import styles from "./WorkoutStarter.module.css";
+import styles from "./StartWorkoutButton.module.css";
 
 interface Props {
   onSave: (workout: SavedWorkout) => void;
 }
 
-export default function WorkoutStarter({ onSave }: Props) {
+export default function StartWorkoutButton({ onSave }: Props) {
   const [open, setOpen] = useState(false);
   const { data: session } = useSession();
   const router = useRouter();
