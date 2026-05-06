@@ -1,5 +1,5 @@
 import { useState, useMemo } from "react";
-import { Exercise } from "./exercises";
+import { Exercise } from "./useExercises";
 import { ExerciseFilters } from "../components/exercises/filterbutton/FilterButton";
 import { SortOrder } from "../components/exercises/sortbutton/SortButton";
 
@@ -46,5 +46,13 @@ export function useFilteredExercises(exercises: Exercise[]) {
       });
   }, [exercises, query, filters, sortOrder]);
 
-  return { query, setQuery, filters, setFilters, sortOrder, setSortOrder, filteredExercises };
+  return {
+    query,
+    setQuery,
+    filters,
+    setFilters,
+    sortOrder,
+    setSortOrder,
+    filteredExercises,
+  };
 }

@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import { Exercise } from "@/app/hooks/exercises";
+import { Exercise } from "@/app/hooks/useExercises";
 import WorkoutExercise, {
   WorkoutSet,
 } from "../WorkoutExercise/WorkoutExercise";

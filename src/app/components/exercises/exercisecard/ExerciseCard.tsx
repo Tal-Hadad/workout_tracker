@@ -1,6 +1,6 @@
 import { memo } from "react";
 import styles from "./ExerciseCard.module.css";
-import { Exercise } from "@/app/hooks/exercises";
+import { Exercise } from "@/app/hooks/useExercises";
 import EditExerciseButton from "../editexercisebutton/EditExerciseButton";
 import DeleteExerciseButton from "../deleteexercisebutton/DeleteExerciseButton";
 

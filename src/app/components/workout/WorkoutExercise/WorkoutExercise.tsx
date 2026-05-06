@@ -1,5 +1,5 @@
 "use client";
-import { Exercise } from "@/app/hooks/exercises";
+import { Exercise } from "@/app/hooks/useExercises";
 import styles from "./WorkoutExercise.module.css";
 
 export interface WorkoutSet {
@@ -12,7 +12,12 @@ interface Props {
   exercise: Exercise;
   sets: WorkoutSet[];
   onAddSet: (id: string) => void;
-  onUpdateSet: (id: string, index: number, field: "reps" | "weight", value: string) => void;
+  onUpdateSet: (
+    id: string,
+    index: number,
+    field: "reps" | "weight",
+    value: string,
+  ) => void;
   onRemoveSet: (id: string, index: number) => void;
   onRemove: (id: string) => void;
 }
@@ -33,7 +38,10 @@ export default function WorkoutExercise({
           {exercise.name}
           <span className={styles.exerciseCategory}>{exercise.category}</span>
         </p>
-        <button className={styles.removeExerciseBtn} onClick={() => onRemove(id)}>
+        <button
+          className={styles.removeExerciseBtn}
+          onClick={() => onRemove(id)}
+        >
           <span className="material-symbols-outlined">delete</span>
         </button>
       </div>
@@ -66,7 +74,10 @@ export default function WorkoutExercise({
             value={set.reps}
             onChange={(e) => onUpdateSet(id, i, "reps", e.target.value)}
           />
-          <button className={styles.removeSetBtn} onClick={() => onRemoveSet(id, i)}>
+          <button
+            className={styles.removeSetBtn}
+            onClick={() => onRemoveSet(id, i)}
+          >
             <span className="material-symbols-outlined">close</span>
           </button>
         </div>

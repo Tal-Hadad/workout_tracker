@@ -3,7 +3,7 @@ import { useState } from "react";
 import { SavedWorkout } from "../WorkoutModal/WorkoutModal";
 import { WorkoutSet } from "../WorkoutExercise/WorkoutExercise";
 import ExercisePicker from "../ExercisePicker/ExercisePicker";
-import { Exercise } from "@/app/hooks/exercises";
+import { Exercise } from "@/app/hooks/useExercises";
 import styles from "./EditWorkoutModal.module.css";
 
 interface EditEntry {
@@ -86,7 +86,10 @@ export default function EditWorkoutModal({ workout, onClose, onSave }: Props) {
     await onSave(workout.id, {
       title,
       durationSeconds: workout.durationSeconds,
-      entries: entries.map(({ exerciseName, sets }) => ({ exerciseName, sets })),
+      entries: entries.map(({ exerciseName, sets }) => ({
+        exerciseName,
+        sets,
+      })),
     });
     setSaving(false);
     onClose();
@@ -148,7 +151,9 @@ export default function EditWorkoutModal({ workout, onClose, onSave }: Props) {
                   min="0"
                   placeholder="0"
                   value={set.weight}
-                  onChange={(e) => updateSet(entry.id, i, "weight", e.target.value)}
+                  onChange={(e) =>
+                    updateSet(entry.id, i, "weight", e.target.value)
+                  }
                 />
                 <input
                   className={styles.setInput}
@@ -156,7 +161,9 @@ export default function EditWorkoutModal({ workout, onClose, onSave }: Props) {
                   min="0"
                   placeholder="0"
                   value={set.reps}
-                  onChange={(e) => updateSet(entry.id, i, "reps", e.target.value)}
+                  onChange={(e) =>
+                    updateSet(entry.id, i, "reps", e.target.value)
+                  }
                 />
                 <button
                   className={styles.removeSetBtn}

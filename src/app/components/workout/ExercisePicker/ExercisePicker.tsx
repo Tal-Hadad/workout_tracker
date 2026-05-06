@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { useExercises, Exercise } from "@/app/hooks/exercises";
+import { useExercises, Exercise } from "@/app/hooks/useExercises";
 import styles from "./ExercisePicker.module.css";
 
 interface Props {
@@ -13,7 +13,7 @@ export default function ExercisePicker({ onSelect, onClose }: Props) {
   const [query, setQuery] = useState("");
 
   const filtered = exercises.filter((e) =>
-    e.name.toLowerCase().includes(query.toLowerCase())
+    e.name.toLowerCase().includes(query.toLowerCase()),
   );
 
   return (
