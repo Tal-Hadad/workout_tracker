@@ -1,9 +1,10 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Footer from "./components/footer/Footer";
 import AuthProvider from "./components/auth/AuthProvider/AuthProvider";
 import LoginButton from "./components/auth/LoginButton/LoginButton";
+import ServiceWorkerRegister from "./components/pwa/ServiceWorkerRegister/ServiceWorkerRegister";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -17,7 +18,21 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "WorkoutTracker",
-  description: "The best workut tracker",
+  description: "Professional Workout Tracker",
+  manifest: "/manifest.webmanifest",
+  icons: {
+    icon: "/favicon/favicon.ico",
+    apple: "/favicon/apple-touch-icon.png",
+  },
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "black-translucent",
+    title: "WorkoutTracker",
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#0a0a0a",
 };
 
 export default function RootLayout({
@@ -36,6 +51,7 @@ export default function RootLayout({
       </head>
       <body>
         <AuthProvider>
+          <ServiceWorkerRegister />
           <LoginButton />
 
           {children}
